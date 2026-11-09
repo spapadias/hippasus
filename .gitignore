@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs
+*.log
+nohup.out
+
+# Experiment results (cache and outputs)
+src/experiments/results/*/
+!src/experiments/results/.gitkeep
+
+# AutoGluon models
+AutogluonModels/
+
+# Data (download separately)
+data/*/
+!data/.gitkeep
+
+# Temporary files
+*.tmp
+*.bak
+.cache/
+results/*.pkl
+results/*.csv
+src/experiments/results/*.json

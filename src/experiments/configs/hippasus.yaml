@@ -1,0 +1,42 @@
+# Hippasus configuration file
+# Edit parameters below, then run: python run_hippasus.py
+
+experiment:
+  # System variant — choose one:
+  #   hippasus_adaptive  — two-level cascade with tau (recommended, used in paper)
+  #   hippasus_stats     — statistics-only, no LLM
+  #   hippasus_slm       — SLM proxy always, no LLM oracle
+  #   hippasus_llm       — LLM oracle always
+  variant: hippasus_adaptive
+
+  # Datasets to run — any subset of:
+  # school, credit, eyemove, steel, jannis, miniboone, covertype,
+  # bioresponse, diabetes, fraud, poverty, air, northwind
+  datasets:
+    - steel
+
+  # Random seeds
+  seeds:
+    - 42
+
+pipeline:
+  max_depth: 7           # Maximum join path length (ℓ)
+  num_paths: 10          # Number of paths forwarded to JEX (π)
+  adaptive_tau: 0.001    # Cascade threshold τ (hippasus_adaptive only)
+  join_algo: suffix-yannakakis
+  test_size: 0.2
+
+feature_selection:
+  k: 10                  # Number of features to select (κ)
+  pre_filter_K: 100      # Candidate pool size before LLM ranking
+
+llm:
+  model: openai/gpt-6-luna    # Any OpenRouter model string
+
+evaluation:
+  time_limit: null       # AutoGluon training time limit in seconds; null = no limit, as in the paper
+
+output:
+  results_dir: results/
+  cache_file: results/hippasus_cache.pkl
+  use_cache: true
